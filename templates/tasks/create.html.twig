@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container" id="Tasks">
+	<h3 id="listTitle">My Tasks</h3>
+	
+    <form method="POST" action="{{ path('create_task') }}">
+    	<input name="taskTitle" type="text" id="myTask" placeholder="Enter your new task"/>
+    	<button type="submit" class="addBtn">Add a task</button>
+    </form>
+    
+	<ul class="list">
+	
+	{% for task in tasks %}
+        <li {% if task.status %} class="checked" {% endif %}>
+        	<a href="{{ path('task_status', {'id':task.id}) }}">
+        		<span class="task-list-item">{{ task.title }}</span>
+        	</a>
+        	<a onclick="return confirm('Is this task really done?')" href="{{ path('task_delete', {'id':task.id}) }}">
+        		<span class="close">X</span>
+        	</a>
+        </li>
+        
+    {% endfor %}    
+        
+    </ul>
+</div>
+
+{% endblock %}
