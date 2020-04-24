@@ -5,16 +5,16 @@
 <div class="container" id="homepage">
     <h3 id="title">TaskList! A simple CRUD app in Symfony</h3>
 
-    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+    {# {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
     <a href="{{ path("homepage") }}">
         <button type="button" class="btn btn-primary btn-lg">Login</button>
-    </a>
+    </a> #}
 
     <a href="{{ path("display_tasks") }}">
         <button type="button" class="btn btn-primary btn-lg">My Tasks</button>
     </a>
     
-    <a href="{{ path("homepage") }}">
+    {# <a href="{{ path("homepage") }}">
         <button type="button" class="btn btn-primary btn-lg">Register</button>
     </a>
     {% endif %}
@@ -23,7 +23,7 @@
     <a href="{{ path("display_tasks") }}">
         <button type="button" class="btn btn-primary btn-lg">My Tasks</button>
     </a>
-    {% endif %}
+    {% endif %} #}
 </div>
 
 {% endblock %}
