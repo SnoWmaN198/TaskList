@@ -16,6 +16,11 @@ class TaskController extends AbstractController
      */
     public function display()
     {
+        if ($this->getUser() == null)
+        {
+            return $this->redirectToRoute('login');
+        }
+        
         $tasks = $this->getDoctrine()->getRepository(Task::class)->findAll();
         return $this->render('task/create.html.twig', ['tasks'=>$tasks]);
     }
