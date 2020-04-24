@@ -6,9 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\User;
 use App\Form\UserFormType;
 
@@ -21,31 +19,21 @@ class UserController extends AbstractController
      * 
      * @Route("/register", name="register") 
      */    
-    public function register(Request $request, EncoderFactoryInterface $encoderFactory, TokenStorageInterface $tokenStorage) 
+    public function register(Request $request, UserPasswordEncoderInterface $encoder) 
     {
+        $manager = $this->getDoctrine()->getManager();
         $user = new User();
         $form = $this->createForm(UserFormType::class, $user, ['standalone' => true]);
         
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $encoder = $encoderFactory->getEncoder(User::class);
+
+            $user->setPassword($encoder->encodePassword($user, $user->getPassword()));
             
-            $user->setSalt(md5($user->getUsername()));
-            $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
-            $role = $user->getRoleId();
-            
-            $user->setPassword($password);
-            $user->setRoleId($role);
-            
-            $manager = $this->getDoctrine()->getManager();
             $manager->persist($user);
             $manager->flush();
             
-            $tokenStorage->setToken(
-                new UsernamePasswordToken($user, null, 'main', $user->getRoleId())    
-            );
-            
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('login');
         }
         
     return $this->render(
@@ -71,5 +59,15 @@ class UserController extends AbstractController
                 'lastUsername' => $lastUsername
             ]
         );
+    }
+
+    /**
+     * Fake logout route for Symfony
+     * 
+     * @Route("/logout", name="logout")
+     */
+    public function logout() 
+    {
+        throw new \RuntimeException('This should not be called directly');
     }
 }

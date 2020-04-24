@@ -28,9 +28,6 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
-     * @Assert\Regex(
-     *     pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9])[A-Za-z\d$@$!%*?&]{8,}/",
-     *     message="Your password must have a minimum of four characters")
      */
     private $password;
 

@@ -1,9 +1,10 @@
 security:
     encoders:
-        App\Entity\User: bcrypt
+        App\Entity\User: 
+            algorithm: bcrypt
 
     providers:
-        users_in_memory: 
+        user_provider: 
             entity:
                 class: App\Entity\User
                 property: username
@@ -13,15 +14,12 @@ security:
             security: false
         main:
             anonymous: true
+            provider: user_provider
 
             form_login:
                 login_path: login
                 check_path: login
-                provider: users_in_memory
-
-            logout:
-                path: /logout
-                target: /
+            logout: ~
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
