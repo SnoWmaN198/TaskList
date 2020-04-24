@@ -12,27 +12,27 @@
         		<a class="nav-link" href="{{ path("homepage") }}">{{ 'Home' }} </a>
       		</li>
       		
-			{# {% if is_granted('IS_AUTHENTICATED_FULLY') %} #}
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 			<li class="nav-item{% if route == 'display_tasks' %} active{% endif %}">
         		<a class="nav-link" href="{{ path("display_tasks") }}">{{ 'My Tasks' }} </a>
       		</li>
-			{# {% endif %}
+			{% endif %}
       		
       		{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
       		<li class="nav-item{% if route == 'register' %} active{% endif %}">
-        		<a class="nav-link" href="{{ path("homepage") }}">{{ 'Register' }}</a>
+        		<a class="nav-link" href="{{ path("register") }}">{{ 'Register' }}</a>
       		</li>
       		
       		<li class="nav-item{% if route == 'login' %} active{% endif %}">
-        		<a class="nav-link" href="{{ path("homepage") }}">{{ 'Login' }}</a>
+        		<a class="nav-link" href="{{ path("login") }}">{{ 'Login' }}</a>
       		</li>
-      		{% endif %}      		
+      		{% endif %}   		
       		      		
       		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
       		<li class="nav-item">
-        		<a class="nav-link" href="{{ path("homepage") }}">{{ 'Logout' }}</a>
+        		<a class="nav-link" href="{{ path("logout") }}">{{ 'Logout' }}</a>
       		</li>
-      		{% endif %} #}  		
+      		{% endif %}  		
     	</ul>
   	</div>
 </div>  	

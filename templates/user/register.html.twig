@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formObj 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+<h1 id="registerTitle">Register</h1>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div id="registerForm">
+            {{ form(formObj) }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

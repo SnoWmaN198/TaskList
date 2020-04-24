@@ -7,6 +7,38 @@
    text-align: center; 
 }
 
+#loginTitle {
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 30px;
+}
+
+#loginForm {
+    border: 3px solid #adb5bd;
+    border-radius: 1rem;
+    padding: 10px;
+}
+
+#loginForm form input {
+    display: block;
+}
+
+#registerTitle {
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 30px;
+}
+
+#registerForm {
+    border: 3px solid #adb5bd;
+    border-radius: 1rem;
+    padding: 10px;
+}
+
+#registerForm form input {
+    display: block;
+}
+
 #myTask {
     padding-bottom: 6px;
 }
