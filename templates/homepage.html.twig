@@ -3,11 +3,15 @@
 {% block body %}
 
 <div class="container" id="homepage">
-    <h3 id="title">TaskList! An app to view your daily tasks</h3>
+    <h3 id="title">TaskList! A simple CRUD app in Symfony</h3>
 
     {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
     <a href="{{ path("homepage") }}">
         <button type="button" class="btn btn-primary btn-lg">Login</button>
+    </a>
+
+    <a href="{{ path("display_tasks") }}">
+        <button type="button" class="btn btn-primary btn-lg">My Tasks</button>
     </a>
     
     <a href="{{ path("homepage") }}">
@@ -16,7 +20,7 @@
     {% endif %}
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-    <a href="{{ path("homepage") }}">
+    <a href="{{ path("display_tasks") }}">
         <button type="button" class="btn btn-primary btn-lg">My Tasks</button>
     </a>
     {% endif %}

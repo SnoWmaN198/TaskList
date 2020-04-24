@@ -18,14 +18,25 @@
 }
 
 .list {
-    background-color: lightgray;
+    background-color: #adb5bd;
     margin: 20px;
     padding: 0;
     list-style: none;
+    border: 2px solid black;
+    border-radius: 10px;
 }
 
 .list li {
-    padding: 10px 0;
+    padding: 2px 0;
+    border-bottom: 1px solid black;
+}
+
+.list li a {
+    color: red;
+}
+
+.list li a:hover {
+    text-decoration: none;
 }
 
 .task-list-item {
@@ -35,4 +46,9 @@
 
 .checked {
     text-decoration: line-through;
+}
+
+.close {
+    color: red;
+    padding-top: 6px;
 }
