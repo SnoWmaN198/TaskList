@@ -7,6 +7,10 @@
    text-align: center; 
 }
 
+#myTask {
+    padding-bottom: 6px;
+}
+
 #Tasks {
     text-align: center;
     width: 100%;
@@ -14,7 +18,7 @@
 }
 
 .list {
-    background-color: gray;
+    background-color: lightgray;
     margin: 20px;
     padding: 0;
     list-style: none;
@@ -26,7 +30,7 @@
 
 .task-list-item {
     color: black;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 .checked {
