@@ -20,7 +20,7 @@ class TaskController extends AbstractController
         return $this->render('task/create.html.twig', ['tasks'=>$tasks]);
     }
     
-    // function to create a task
+    // function to add a task to the list
     /**
      * @Route("/create", name="create_task", methods={"GET", "POST"})
      */
@@ -43,7 +43,8 @@ class TaskController extends AbstractController
         return $this->redirectToRoute('display_tasks');
     }
     
-    // function to switch the status of a task in the list
+    // function to update the status of a task 
+    // (By clicking on the Task a red line goes through the task to tell the user the task is done)
     /**
      * @Route("/status/{id}", name="task_status")
      */
@@ -58,7 +59,7 @@ class TaskController extends AbstractController
         return $this->redirectToRoute('display_tasks');
     }
     
-    // function to delete a task
+    // function to delete a task (User will be asked if he really wants to delete the task)
     /**
      * @Route("/delete/{id}", name="task_delete")
      */

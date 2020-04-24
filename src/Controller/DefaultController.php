@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class DefaultController extends AbstractController
 {
     /**
+     * Application Homepage
+     * 
      * @Route("/", name="homepage")
      */
     public function index()
