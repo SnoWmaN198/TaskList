@@ -3,9 +3,9 @@
 {% block body %}
 
 <div class="container" id="homepage">
-    <h3 id="title">TaskList! A simple CRUD app in Symfony</h3>
 
     {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+    <h3 id="title">TaskList! A simple CRUD app in Symfony</h3>
     <a href="{{ path("login") }}">
         <button type="button" class="btn btn-primary btn-lg">Login</button>
     </a>
@@ -16,6 +16,7 @@
     {% endif %}
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <h3 id="userTitle">Welcome {{ app.user.username }} !</h3>
     <a href="{{ path("display_tasks") }}">
         <button type="button" class="btn btn-primary btn-lg">My Tasks</button>
     </a>
