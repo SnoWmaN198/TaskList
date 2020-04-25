@@ -21,7 +21,8 @@ class TaskController extends AbstractController
             return $this->redirectToRoute('login');
         }
         
-        $tasks = $this->getDoctrine()->getRepository(Task::class)->findAll();
+        $user = $this->getUser();
+        $tasks = $this->getDoctrine()->getRepository(Task::class)->findByUser($user);
         return $this->render('task/create.html.twig', ['tasks'=>$tasks]);
     }
     
@@ -35,6 +36,7 @@ class TaskController extends AbstractController
         
         $task = new Task();
         $task->setTitle($taskTitle);
+        $task->setUser($this->getUser());
         
         if (empty($taskTitle)) {
             
